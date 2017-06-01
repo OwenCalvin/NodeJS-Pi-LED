@@ -1,0 +1,58 @@
+* {
+     font-family: Roboto;
+}
+
+button {
+     font-weight: 400;
+     background: transparent;
+     border-radius: 35px;
+     padding: 12px 20px 12px 20px;
+     border: 2px solid #0099FF;
+     font-size: 1.5em;
+     color: #0099FF;
+     transition: all .15s ease-in-out 0s;
+     outline: none;
+     margin-left: 40px;
+     margin-right: 40px;
+}
+
+#green {
+     color: #1ED760;
+     border-color: #1ED760;
+}
+
+#red {
+     color: #EB586F;
+     border-color: #EB586F;
+}
+
+#yellow {
+     color: #FFD460;
+     border-color: #FFD460;
+}
+
+.allButton {
+     font-weight: 100;
+     font-size: 1.5em;
+     color: rgb(50, 50, 50);
+     transition: all .15s ease-in-out 0s;
+     border:none;
+     outline: none;
+     margin: 20px;
+}
+
+button:hover {
+     transform: scale(1.1);
+}
+
+button:active {
+     transform: scale(.99);
+}
+
+section {
+     width: 100%;
+     position: absolute;
+     left: 50%;
+     top: 50vh;
+     transform: translateX(-50%) translateY(-50%);
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<head>
+     <title>LED</title>
+     <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
+     <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section>
+        <button class="controlButton" data-on="false" data-pin="7" id="green">Allumer</button>
+        <button class="controlButton" data-on="false" data-pin="11" id="red">Allumer</button>
+        <button class="controlButton" data-on="false" data-pin="15" id="yellow">Allumer</button>
+        <button class="allButton" data-value='true'>Allumer tout</button>
+        <button class="allButton" data-value='false'>Eteindre tout</button>
+   </section>
+
+    <script defer>
+         var socket = io.connect('http://www.davenstudio.com:3000/');
+
+          socket.emit('TurnOff', 7);
+          socket.emit('TurnOff', 11);
+          socket.emit('TurnOff', 15);
+
+         $('.controlButton').click(function(e) {
+               Switch($(this), ($(this).attr('data-on') == 'false').toString());
+         });
+
+         function Switch(e, val) {
+               if(e.attr('data-on') == 'false') {
+                    setStatus(e, true);
+               } else {
+                    setStatus(e, false);
+               }
+
+               e.attr('data-on', val);
+         }
+
+         function setStatus(e, val) {
+              if(val) {
+                    socket.emit('TurnOn', e.attr('data-pin'));
+                    e.text('Eteindre');
+              } else {
+                    socket.emit('TurnOff', e.attr('data-pin'));
+                    e.text('Allumer');
+              }
+         }
+
+         $('.allButton').click(function() {
+               var val = ($(this).attr('data-value') == 'true');
+               $('.controlButton').each(function(i) {
+                    var e = $(this);
+                    setStatus(e, val);
+               });
+         });
+    </script>
+</body>
+</html>

@@ -1,13 +1,13 @@
 {
   "name": "led",
   "version": "1.0.0",
-  "description": "",
+  "description": "LEDs control with a web interface using NodeJS",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Owen Gombas",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.15.3",
     "pi-gpio": "0.0.8",

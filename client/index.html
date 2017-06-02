@@ -9,15 +9,15 @@
 
 <body>
     <section>
-        <button class="controlButton" data-on="false" data-pin="7" id="green">Allumer</button>
-        <button class="controlButton" data-on="false" data-pin="11" id="red">Allumer</button>
-        <button class="controlButton" data-on="false" data-pin="15" id="yellow">Allumer</button>
-        <button class="allButton" data-value='true'>Allumer tout</button>
-        <button class="allButton" data-value='false'>Eteindre tout</button>
+        <button class="controlButton" data-on="false" data-pin="7" id="green">Turn on</button>
+        <button class="controlButton" data-on="false" data-pin="11" id="red">Turn on</button>
+        <button class="controlButton" data-on="false" data-pin="15" id="yellow">Turn on</button>
+        <button class="allButton" data-value='true'>Turn on all</button>
+        <button class="allButton" data-value='false'>Turn off all</button>
    </section>
 
     <script defer>
-         var socket = io.connect('http://www.davenstudio.com:3000/');
+         var socket = io.connect('http://www.davenstudio.com:3000/'); // INSERT THE SERVER'S IP:PORT
 
           socket.emit('TurnOff', 7);
           socket.emit('TurnOff', 11);
@@ -40,10 +40,10 @@
          function setStatus(e, val) {
               if(val) {
                     socket.emit('TurnOn', e.attr('data-pin'));
-                    e.text('Eteindre');
+                    e.text('Turn off');
               } else {
                     socket.emit('TurnOff', e.attr('data-pin'));
-                    e.text('Allumer');
+                    e.text('Turn on');
               }
          }
 
